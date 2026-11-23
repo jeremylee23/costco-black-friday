@@ -1,0 +1,7 @@
+# 只發布網頁與照片
+*
+!.gitignore
+!.nojekyll
+!index.html
+!photos/
+!photos/*.jpg

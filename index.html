@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="zh-Hant">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<!-- 由 deals.html 產生；照片讀取同資料夾的 photos/ -->
+<title>好市多黑五特價牆</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: a warehouse aisle. Concrete floor, shelf-tag cards with a perforated tear line, hazard-tape header band. */
+:root{
+  --bg:#e5e7e7; --surface:#ffffff; --surface-2:#f2f3f3; --ink:#131617; --ink-2:#434a4e; --muted:#6f777c; --line:#d2d6d8;
+  --band:#131516; --band-2:#1a1d1f; --band-3:#212528; --band-line:#2f3437; --band-ink:#f3f4f4; --band-muted:#9ba2a6;
+  --hazard:#ffc414; --hazard-ink:#131617;
+  --hot:#c3261a; --on-hot:#ffffff; --warm:#b4570c; --ok:#1c6f45;
+  --tile:#eceeee; --tile-ink:#2b3134; --photo-bg:#ffffff; --scrim:rgba(19,21,22,.5);
+  --font-num:"Barlow Condensed","Arial Narrow","Noto Sans TC",sans-serif;
+  --font-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --r:6px; --gut-l:max(16px,env(safe-area-inset-left,0px)); --gut-r:max(16px,env(safe-area-inset-right,0px));
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121415; --surface:#1c1f21; --surface-2:#23272a; --ink:#eef0f0; --ink-2:#bcc3c6; --muted:#8a9296; --line:#30363a;
+  --band:#0a0b0c; --band-2:#141719; --band-3:#1b1f21; --band-line:#2a2f32; --band-ink:#f3f4f4; --band-muted:#8a9296;
+  --hot:#ff6b5d; --on-hot:#1d0a07; --warm:#f2a050; --ok:#5cc08a;
+  --tile:#25292c; --tile-ink:#d9dee0; --photo-bg:#ffffff; --scrim:rgba(0,0,0,.6); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121415; --surface:#1c1f21; --surface-2:#23272a; --ink:#eef0f0; --ink-2:#bcc3c6; --muted:#8a9296; --line:#30363a;
+  --band:#0a0b0c; --band-2:#141719; --band-3:#1b1f21; --band-line:#2a2f32; --band-ink:#f3f4f4; --band-muted:#8a9296;
+  --hot:#ff6b5d; --on-hot:#1d0a07; --warm:#f2a050; --ok:#5cc08a;
+  --tile:#25292c; --tile-ink:#d9dee0; --photo-bg:#ffffff; --scrim:rgba(0,0,0,.6); color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+img{max-width:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.6 var(--font-body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:1240px;margin:0 auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--hazard);outline-offset:2px}
+h1,h2,h3{text-wrap:balance}
+.num{font-family:var(--font-num);font-variant-numeric:tabular-nums}
+
+/* ---------- hero band ---------- */
+.top{background:var(--band);color:var(--band-ink);position:relative}
+.top::after{content:"";display:block;height:12px;background:repeating-linear-gradient(-45deg,var(--hazard) 0 14px,var(--band) 14px 28px)}
+.hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:32px;padding-block:28px 30px;align-items:end}
+.eyebrow{font:600 13px/1.3 var(--font-num),var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--band-muted);margin:0 0 10px}
+.hero h1{font:900 clamp(30px,5vw,48px)/1.12 var(--font-body);margin:0;letter-spacing:.01em}
+.dates{font:800 clamp(56px,11vw,124px)/.9 var(--font-num);letter-spacing:-.01em;margin:14px 0 10px;display:flex;align-items:baseline;gap:.15em;flex-wrap:wrap}
+.dates i{font-style:normal;color:var(--hazard);font-weight:600;font-size:.55em}
+.lede{color:var(--band-muted);margin:0;max-width:34em}
+.lede b{color:var(--band-ink);font-weight:700}
+.board{border:1px solid var(--band-line);border-radius:var(--r);padding:16px 18px;display:grid;gap:14px;background:var(--band-2)}
+.board .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.board .k{color:var(--band-muted);font-size:13px}
+.board .v{font:700 22px/1.1 var(--font-num);font-variant-numeric:tabular-nums}
+.board .v.big{font-size:34px;color:var(--hazard)}
+.board hr{border:0;border-top:1px dashed var(--band-line);margin:0}
+.entry{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.entry div{background:var(--band-3);border-radius:4px;padding:8px 10px}
+.entry b{display:block;font:800 26px/1 var(--font-num)}
+.entry span{font-size:12px;color:var(--band-muted)}
+
+/* ---------- deepest-discount rail ---------- */
+.railsec{padding-block:22px 6px}
+.sechead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.sechead h2{font:900 22px/1.2 var(--font-body);margin:0}
+.sechead p{margin:0;color:var(--muted);font-size:13px}
+.rail{display:flex;gap:10px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x proximity}
+.rail button{flex:0 0 auto;scroll-snap-align:start;display:grid;grid-template-columns:auto 1fr;gap:2px 12px;align-items:center;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px 14px 10px 10px;cursor:pointer;color:var(--ink);font:inherit;width:250px}
+.rail button:hover{border-color:var(--ink-2)}
+.rail .pct{grid-row:span 2;font:800 30px/1 var(--font-num);background:var(--hot);color:var(--on-hot);padding:8px 8px 6px;border-radius:4px;min-width:62px;text-align:center}
+.rail .rn{font-size:13px;line-height:1.35;overflow:hidden;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical}
+.rail .rp{font:700 18px/1 var(--font-num);font-variant-numeric:tabular-nums}
+.rail .rp s{color:var(--muted);font-weight:500;font-size:14px;margin-left:6px}
+
+/* ---------- filter bar ---------- */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;background:var(--bg);border-bottom:1px solid var(--line);box-shadow:0 6px 12px -10px rgba(0,0,0,.25)}
+.bar .wrap{padding-block:10px;display:grid;gap:8px}
+.bar-r1{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.search{flex:1 1 220px;min-width:0;position:relative}
+.search input{width:100%;font:500 15px var(--font-body);padding:9px 12px 9px 36px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);color:var(--ink)}
+.search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:17px;height:17px;color:var(--muted)}
+select{font:600 14px var(--font-body);padding:9px 10px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);color:var(--ink)}
+.seg{display:inline-flex;border:1px solid var(--ink);border-radius:var(--r);overflow:hidden}
+.seg button{font:600 14px var(--font-body);padding:7px 12px;border:0;background:var(--surface);color:var(--ink);cursor:pointer;white-space:nowrap}
+.seg button + button{border-left:1px solid var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.seg small{font:600 12px var(--font-num);opacity:.7;margin-left:3px}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:0 0 auto;font:500 13px var(--font-body);padding:5px 11px;border-radius:99px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--hazard);border-color:var(--hazard);color:var(--hazard-ink);font-weight:700}
+.bar-r3{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.bar-r3 label{display:inline-flex;align-items:center;gap:6px;cursor:pointer;color:var(--ink-2)}
+.bar-r3 input{accent-color:var(--ink);width:16px;height:16px}
+
+/* ---------- grid of shelf tags ---------- */
+main{padding-block:18px 40px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr));gap:14px}
+.empty{grid-column:1/-1;text-align:center;padding:48px 16px;color:var(--muted);border:1px dashed var(--line);border-radius:var(--r)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);display:flex;flex-direction:column;min-width:0;position:relative;overflow:hidden;transition:box-shadow .2s}
+.card:hover{box-shadow:0 6px 18px -10px rgba(0,0,0,.35)}
+.card.ended{opacity:.55}
+.card.flash{animation:flash 1.6s ease-out}
+@keyframes flash{0%,40%{box-shadow:0 0 0 4px var(--hazard)}100%{box-shadow:0 0 0 0 transparent}}
+.media{position:relative;aspect-ratio:4/3;max-width:100%;background:var(--tile);color:var(--tile-ink);display:grid;place-items:center;overflow:hidden}
+.media::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 23px,color-mix(in srgb,var(--tile-ink) 5%,transparent) 23px 24px)}
+.tile{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:0 10px;text-align:center}
+.tile svg{width:34px;height:34px}
+.tile .spec{font:800 clamp(26px,3.2vw,36px)/1 var(--font-num);letter-spacing:.01em;font-variant-numeric:tabular-nums;max-width:100%;overflow-wrap:anywhere}
+.media img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:var(--photo-bg);padding:10px}
+.itno{position:absolute;left:9px;bottom:6px;font:600 12px/1 var(--font-num);color:var(--muted);letter-spacing:.04em;background:var(--tile);padding:2px 4px;border-radius:2px}
+.catlab{position:absolute;right:9px;bottom:6px;font-size:11px;color:var(--muted);background:var(--tile);padding:1px 4px;border-radius:2px}
+.badge{position:absolute;top:8px;left:8px;background:var(--hazard);color:var(--hazard-ink);font:800 19px/1 var(--font-num);padding:6px 8px 5px;border-radius:3px;font-variant-numeric:tabular-nums}
+.badge.hot{background:var(--hot);color:var(--on-hot)}
+.badge.soon{background:var(--surface);color:var(--ink-2);font:700 13px/1 var(--font-body);border:1px solid var(--line)}
+.stat{position:absolute;top:8px;right:8px;font:700 12px/1 var(--font-body);background:var(--surface);color:var(--ink);border:1px solid var(--line);padding:5px 7px;border-radius:99px}
+.stat.up{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.body{padding:10px 12px 10px;display:flex;flex-direction:column;gap:6px;border-top:2px dashed var(--line);flex:1;min-width:0}
+.brand{font:700 12px/1.2 var(--font-num);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.name{font:500 14px/1.45 var(--font-body);margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.9em}
+.price{display:flex;align-items:baseline;gap:4px 8px;flex-wrap:wrap;margin-top:auto}
+.now{font:800 29px/1 var(--font-num);font-variant-numeric:tabular-nums}
+.now small{font-size:15px;font-weight:600;color:var(--muted)}
+.now.tbd{font:700 16px/1.3 var(--font-body);color:var(--muted)}
+.price s{color:var(--muted);font:500 15px/1 var(--font-num);font-variant-numeric:tabular-nums}
+.save{font:700 13px/1.3 var(--font-body);color:var(--hot)}
+.save .num{font-size:16px}
+.hint{font-size:12px;color:var(--muted)}
+.meta{display:flex;gap:5px 8px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--ink-2)}
+.ch{font-weight:700;padding:1px 6px;border-radius:3px;border:1px solid var(--ink-2);line-height:1.5}
+.ch.s{background:var(--ink-2);color:var(--surface)}
+.stars{color:var(--ink-2)}
+.stars b{color:var(--warm)}
+.note{font-size:12px;line-height:1.45;color:var(--warm);margin:0}
+.acts{display:grid;grid-template-columns:1fr auto auto;border-top:1px solid var(--line)}
+.acts > *{padding:9px 10px;font:600 13px/1.2 var(--font-body);color:var(--ink);background:none;border:0;text-decoration:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;white-space:nowrap}
+.acts > * + *{border-left:1px solid var(--line)}
+.acts > *:hover{background:var(--surface-2)}
+.add[aria-pressed="true"]{background:var(--hazard);color:var(--hazard-ink)}
+.add[aria-pressed="true"]:hover{background:var(--hazard)}
+
+/* ---------- guide ---------- */
+.guide{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.guide .wrap{padding-block:36px 40px}
+.gh{font:900 26px/1.2 var(--font-body);margin:0 0 6px}
+.gsub{color:var(--muted);margin:0 0 24px}
+.ggrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px}
+.gcard{border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;min-width:0;background:var(--bg)}
+.gcard h3{font:700 17px/1.35 var(--font-body);margin:0 0 8px}
+.gcard ul{margin:0;padding-left:1.1em;display:grid;gap:6px;font-size:14px;color:var(--ink-2)}
+.gcard li b{color:var(--ink)}
+.calc{display:grid;gap:10px}
+.calc label{font-size:13px;color:var(--ink-2)}
+.calc input{width:100%;font:700 20px var(--font-num);padding:8px 10px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);color:var(--ink);font-variant-numeric:tabular-nums}
+.calc .out{font-size:14px;line-height:1.55}
+.calc .out b{font:800 22px var(--font-num)}
+.verdict{display:inline-block;font:700 13px var(--font-body);padding:2px 8px;border-radius:3px;margin-top:4px}
+.verdict.yes{background:var(--ok);color:var(--surface)}
+.verdict.no{background:var(--line);color:var(--ink)}
+.stores{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.stores span{font-size:13px;padding:2px 8px;border:1px solid var(--line);border-radius:99px;background:var(--surface)}
+
+footer .wrap{padding-block:28px 110px;font-size:13px;color:var(--muted);display:grid;gap:10px}
+footer ul{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px 16px}
+footer a{color:var(--ink-2)}
+
+/* ---------- list FAB + drawer ---------- */
+.fab{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:15;display:flex;align-items:center;gap:10px;background:var(--band);color:var(--band-ink);border:2px solid var(--hazard);border-radius:99px;padding:10px 18px 10px 14px;font:700 15px var(--font-body);cursor:pointer;box-shadow:0 10px 24px -8px rgba(0,0,0,.5)}
+.fab .cnt{background:var(--hazard);color:var(--hazard-ink);font:800 16px/1 var(--font-num);min-width:26px;height:26px;border-radius:99px;display:grid;place-items:center;padding:0 6px}
+.fab .sv{font:700 15px var(--font-num);color:var(--hazard)}
+.drawer{position:fixed;inset:0;z-index:30;display:flex;justify-content:flex-end}
+.scrim{position:absolute;inset:0;background:var(--scrim)}
+.panel{position:relative;width:min(440px,100%);height:100%;background:var(--surface);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
+.ph{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}
+.ph h2{margin:0;font:900 20px var(--font-body)}
+.x{background:none;border:1px solid var(--line);border-radius:var(--r);padding:6px 12px;font:600 14px var(--font-body);color:var(--ink);cursor:pointer}
+.plist{flex:1;overflow:auto;padding:6px 18px}
+.li{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:12px 0;border-bottom:1px dashed var(--line)}
+.li .n{font-size:14px;line-height:1.4;min-width:0}
+.li .n small{display:block;color:var(--muted);font-size:12px}
+.li .p{text-align:right;font:700 17px/1.2 var(--font-num);font-variant-numeric:tabular-nums}
+.li .p small{display:block;color:var(--hot);font:600 13px var(--font-num)}
+.li button{grid-column:1/-1;justify-self:start;background:none;border:0;padding:0;color:var(--muted);font-size:12px;text-decoration:underline;cursor:pointer}
+.pempty{color:var(--muted);padding:28px 0;font-size:14px}
+.pf{border-top:1px solid var(--line);padding:14px 18px calc(16px + env(safe-area-inset-bottom,0px));display:grid;gap:8px;background:var(--surface-2)}
+.tot{display:flex;justify-content:space-between;align-items:baseline;font-size:14px}
+.tot b{font:800 20px var(--font-num);font-variant-numeric:tabular-nums}
+.tot.big b{font-size:28px}
+.tot.sv b{color:var(--hot)}
+.opts{display:grid;gap:6px;font-size:13px;color:var(--ink-2);padding:6px 0;border-top:1px dashed var(--line);border-bottom:1px dashed var(--line)}
+.opts label{display:flex;gap:8px;align-items:center;cursor:pointer}
+.opts input{accent-color:var(--ink);width:16px;height:16px}
+.fine{font-size:12px;color:var(--muted);margin:0}
+.clr{justify-self:start;background:none;border:0;color:var(--muted);text-decoration:underline;font-size:13px;cursor:pointer;padding:0}
+.clr.arm{color:var(--hot);font-weight:700}
+
+@media (max-width:860px){.hero{grid-template-columns:1fr;gap:20px;align-items:start}}
+@media (max-width:560px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .body{padding:9px 10px}
+  .now{font-size:24px}
+  .name{font-size:13px}
+  .badge{font-size:16px}
+  .acts > *{padding:9px 4px;font-size:12px}
+  .tile svg{width:28px;height:28px}
+  .seg button{padding:7px 9px;font-size:13px}
+  .panel{height:auto;max-height:88%;align-self:flex-end;border-radius:14px 14px 0 0;width:100%}
+  .fab{padding:9px 14px 9px 10px;font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-tv" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="1.5"/><path d="M8 21h8M12 17v4"/></symbol>
+    <symbol id="i-washer" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="13" r="5"/><path d="M7 5.5h3M15.5 5.5h1"/></symbol>
+    <symbol id="i-fridge" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M5 10h14M8.5 5v2.5M8.5 13v3.5"/></symbol>
+    <symbol id="i-dish" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M4 7h16M7.5 4.5h1.5M7 12h10M7 16h10"/></symbol>
+    <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 2v5M15 2v5M6 7h12v4a6 6 0 0 1-12 0zM12 17v5"/></symbol>
+    <symbol id="i-pot" viewBox="0 0 24 24"><path d="M2 10h20M4.5 10v7a3 3 0 0 0 3 3h9a3 3 0 0 0 3-3v-7M9 6.5h6M12 6.5V4"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M5 11V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3M2 13a2 2 0 0 1 4 0v2h12v-2a2 2 0 0 1 4 0v5H2zM5 18v2M19 18v2"/></symbol>
+    <symbol id="i-spray" viewBox="0 0 24 24"><path d="M8 9h7v12H8zM9.5 9V6h4v3M13.5 6h3.5l1.5-2M18 7.5l2 .5M18 10l2 1.5"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11z"/></symbol>
+    <symbol id="i-food" viewBox="0 0 24 24"><path d="M6 3v7a2.5 2.5 0 0 0 5 0V3M8.5 3v18M17 3c-2.5 2-2.5 7 0 9v9"/></symbol>
+    <symbol id="i-shirt" viewBox="0 0 24 24"><path d="M8.5 3 3 6l2 5 3-1.2V21h8V9.8l3 1.2 2-5-5.5-3a3.5 3.5 0 0 1-7 0z"/></symbol>
+    <symbol id="i-gem" viewBox="0 0 24 24"><path d="M6 3h12l4 6-10 12L2 9zM2 9h20M9.5 3 8 9l4 12 4-12-1.5-6"/></symbol>
+    <symbol id="i-kids" viewBox="0 0 24 24"><rect x="3" y="12" width="8" height="8"/><rect x="13" y="12" width="8" height="8"/><rect x="8" y="4" width="8" height="8"/></symbol>
+    <symbol id="i-tent" viewBox="0 0 24 24"><path d="M2 20h20M12 4 3 20M12 4l9 16M9 20l3-6 3 6"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M3 16v-4l2.5-5h13L21 12v4zM5 16v3h3v-3M16 16v3h3v-3M7 12.5h1.5M15.5 12.5H17"/></symbol>
+    <symbol id="i-laptop" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="11" rx="1"/><path d="M2 19h20"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l4.5-1L19 8.5 15.5 5 5 15.5zM13.5 7l3.5 3.5"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap hero">
+    <div>
+      <p class="eyebrow">好市多 2026 黑色購物節 · 非官方整理</p>
+      <h1>黑五特價牆</h1>
+      <div class="dates num" aria-label="活動期間 11 月 23 日到 12 月 6 日">11.23<i>→</i>12.06</div>
+      <p class="lede">賣場特價、線上「黑色購物週」與預告品項一次看完。依<b>折扣率</b>或<b>現省金額</b>排序，加入清單就能算出黑鑽卡與聯名卡回饋。</p>
+    </div>
+    <div class="board" aria-live="polite">
+      <div class="row"><span class="k" id="today-label">今天</span><span class="v" id="day-of">—</span></div>
+      <hr>
+      <div class="row"><span class="k" id="cd-label">下一批特價公布（每天 16:00）</span><span class="v big" id="cd">--:--:--</span></div>
+      <hr>
+      <div class="entry">
+        <div><b class="num">07:30</b><span>黑鑽會員入場</span></div>
+        <div><b class="num">08:30</b><span>金星・商業會員入場</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="wrap railsec" aria-labelledby="rail-h">
+  <div class="sechead">
+    <h2 id="rail-h">折扣最深</h2>
+    <p>依折扣率排序，只列出售價已公布、仍在檔期內的品項。點一下跳到該商品。</p>
+  </div>
+  <div class="rail" id="rail"></div>
+</section>
+
+<div class="bar" id="bar">
+  <div class="wrap">
+    <div class="bar-r1">
+      <div class="search">
+        <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-search"/></svg>
+        <input id="q" type="search" placeholder="搜尋品牌或商品，例如 TCL、洗碗機、床墊" aria-label="搜尋商品" autocomplete="off">
+      </div>
+      <div class="seg" role="group" aria-label="通路" id="seg"></div>
+      <select id="sort" aria-label="排序方式">
+        <option value="save">現省金額 高→低</option>
+        <option value="pct">折扣率 高→低</option>
+        <option value="low">特價 低→高</option>
+        <option value="high">特價 高→低</option>
+      </select>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="商品分類"></div>
+    <div class="bar-r3">
+      <span id="count">—</span>
+      <label for="hide-ended"><input type="checkbox" id="hide-ended" checked> 隱藏已結束的優惠</label>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="grid" id="grid"></div>
+</main>
+
+<section class="guide" aria-labelledby="guide-h">
+  <div class="wrap">
+    <h2 class="gh" id="guide-h">出發前先看</h2>
+    <p class="gsub">檔期、入場、回饋與注意事項。資訊整理自官網與各媒體報導，實際以好市多公告為準。</p>
+    <div class="ggrid">
+      <div class="gcard">
+        <h3>檔期怎麼算</h3>
+        <ul>
+          <li><b>賣場 11/23 首波</b>：多數品項到 <b>12/06</b>；美國頂級嫩肩里肌只有 11/23 一天，ARIEL 洗衣精到 11/26。</li>
+          <li><b>賣場 11/24 第二波</b>：19 項，全部到 12/06。</li>
+          <li><b>線上「黑色購物週」</b>：官網即日起到 <b>11/29</b>，標價已含運。</li>
+          <li>每天 <b>16:00</b> 官方 Facebook／Instagram 公布隔天新增品項，整檔共 700 項以上。</li>
+        </ul>
+      </div>
+      <div class="gcard">
+        <h3>入場與搶購</h3>
+        <ul>
+          <li>今年首次分流：<b>黑鑽會員 07:30</b>，金星與商業會員 08:30。</li>
+          <li>熱門品項可能<b>每卡限購</b>，數量有限、售完為止。</li>
+          <li>PHILIPS 保管櫃只在中壢、台中、大順三店販售。</li>
+          <li>賣場黑五特價只在 14 間賣場，不適用線上；線上價與賣場價可能不同，兩邊都比一下。</li>
+        </ul>
+      </div>
+      <div class="gcard">
+        <h3>大家電下單前</h3>
+        <ul>
+          <li>核對<b>型號與尺寸</b>，量好門框、電梯與擺放位置。</li>
+          <li>確認<b>運送與安裝</b>是否包含在價格內，以及舊機回收方式。</li>
+          <li>倍耐力輪胎須同車一次購買並安裝 4 條相同規格，免安裝費。</li>
+          <li>洗碗機、冰箱這類常有多個型號，DM 上的型號以本頁商品名稱為準。</li>
+        </ul>
+      </div>
+      <div class="gcard">
+        <h3>黑鑽卡值不值得升級</h3>
+        <div class="calc">
+          <label for="spend">預估一年在好市多的消費（元）</label>
+          <input id="spend" type="number" inputmode="numeric" min="0" step="1000" value="120000">
+          <div class="out" id="calc-out"></div>
+          <p class="fine">黑鑽年費 3,000、金星 1,500，差額 1,500。回饋 2%、每年上限 30,000，年消費 75,000 即可打平。會員費、禮品卡、汽車、金條金幣、加油站、美食區、停車、運費與安裝費、稅金等不計回饋。</p>
+        </div>
+      </div>
+      <div class="gcard">
+        <h3>富邦 Costco 聯名卡</h3>
+        <ul>
+          <li>賣場消費 <b>2%</b>、線上 <b>3%</b> 好多金，可與黑鑽 2% 疊加（賣場最高 4%、線上最高 5%）。</li>
+          <li>單筆 1,000 元以上可分 12–30 期，前 3 期免息；<b>分期交易不回饋好多金</b>，兩者擇一。</li>
+          <li>回饋為事後發放，結帳當下不會折抵。</li>
+        </ul>
+      </div>
+      <div class="gcard">
+        <h3>販售黑五特價的 14 間賣場</h3>
+        <div class="stores" id="stores"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0">本頁為個人整理的購物參考，不是好市多官方網站。價格、庫存與期間以賣場標示及 costco.com.tw 為準。資料整理時間：2026/11/23 晚間（含 11/24 第二波）。賣場 11/24 第二波目前只公布現省金額，售價以賣場標示為準。</p>
+    <ul>
+      <li><a href="https://www.costco.com.tw/blackfriday" target="_blank" rel="noopener">好市多官網 黑色購物週</a></li>
+      <li><a href="https://www.costco.com.tw/c/Hero_wowitem" target="_blank" rel="noopener">官網線上特價清單</a></li>
+      <li><a href="https://www.facebook.com/TAIWAN.COSTCO/" target="_blank" rel="noopener">官方 Facebook</a></li>
+      <li><a href="https://www.instagram.com/costco.taiwan/" target="_blank" rel="noopener">官方 Instagram</a></li>
+      <li><a href="https://cpok.tw/73301" target="_blank" rel="noopener">CP值 DM 整理</a></li>
+      <li><a href="https://mrmad.com.tw/costco-black-friday-2026-deals" target="_blank" rel="noopener">瘋先生</a></li>
+      <li><a href="https://www.storm.mg/lifestyle/11183976" target="_blank" rel="noopener">風傳媒</a></li>
+      <li><a href="https://www.chinatimes.com/realtimenews/20261123004144-260405" target="_blank" rel="noopener">中時新聞網</a></li>
+      <li><a href="https://www.businesstoday.com.tw/article/category/183030/post/202611220007/" target="_blank" rel="noopener">今周刊</a></li>
+    </ul>
+  </div>
+</footer>
+
+<button class="fab" id="fab" type="button" aria-haspopup="dialog" aria-controls="drawer">
+  <span class="cnt" id="fab-cnt">0</span><span>購物清單</span><span class="sv" id="fab-sv"></span>
+</button>
+
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-h" hidden>
+  <div class="scrim" id="scrim"></div>
+  <div class="panel">
+    <div class="ph"><h2 id="drawer-h">購物清單</h2><button class="x" id="close" type="button">關閉</button></div>
+    <div class="plist" id="plist"></div>
+    <div class="pf" id="pf"></div>
+  </div>
+</div>
+
+<script>
+/* [分類, 通路 s賣場/o線上/p預告, 檔期, 品牌, 品名, 特價, 現省, 商品編號, 官網圖片, 評分, 評價數, 規格字, 備註, 圖示, 搜尋字, 單位] */
+const RAW = [
+['tv','s','u','SAMSUNG 三星','85吋 NEO QLED 顯示器',72999,23000,'','',0,0,'85″','售價為媒體現場回報，期限未註明','tv','SAMSUNG 85吋 Neo QLED'],
+['appl','s','a','WHIRLPOOL 惠而浦','17公斤洗衣機＋16公斤乾衣機 8TWFW6620HW',58499,19500,'130474','',0,0,'17+16kg','','washer','惠而浦 洗衣機 乾衣機'],
+['appl','s','a','WHIRLPOOL 惠而浦','610公升對開冰箱 WF2X610NWTW',44999,12800,'164605','',0,0,'610L','','fridge','惠而浦 對開冰箱'],
+['appl','s','a','SHARP 夏普','528公升四門對開冰箱 SJ-DF53F-SL',34999,9500,'164608','',0,0,'528L','','fridge','SHARP 夏普 冰箱'],
+['appl','s','a','LG','蒸氣電子衣櫥 Styler E523IR',29799,8000,'138915','',0,0,'STYLER','','washer','LG 蒸氣電子衣櫥'],
+['appl','s','a','LG','21公斤滾筒洗衣機 WD-S21VB',28699,7300,'148867','',0,0,'21kg','','washer','LG 21公斤 滾筒洗衣機'],
+['appl','s','a','ELECTROLUX 伊萊克斯','11/7公斤蒸氣滾筒洗脫烘衣機 EWW1123P5WC',18999,6000,'155430','',0,0,'11/7kg','','washer','伊萊克斯 洗脫烘 EWW1123P5WC'],
+['appl','s','a','SHARP 夏普','13/8公斤滾筒洗脫烘衣機 ES-FD13BT',null,5600,'164604','',0,0,'13/8kg','','washer','SHARP 洗脫烘 ES-FD13BT'],
+['appl','s','a','ELECTROLUX 伊萊克斯','346公升 AI 變頻雙門冰箱 EBM3402L-W',null,5100,'164603','',0,0,'346L','','fridge','伊萊克斯 346公升 冰箱'],
+['home','s','a','PHILIPS 飛利浦','SMART SAFE 保管櫃 SBX301',null,5300,'165407','',0,0,'SAFE','僅中壢、台中、大順店販售','home','飛利浦 保管櫃'],
+['home','s','a','DORMAKABA','四合一推拉智慧鎖 A5850',14998,4001,'147390','',0,0,'4 in 1','','home','DORMAKABA 智慧鎖'],
+['small','s','a','ROBOROCK 石頭','洗地機 F25 ACE PRO',9799,2600,'163011','',0,0,'F25','','plug','石頭 洗地機 F25 ACE PRO'],
+['small','s','a','PHILIPS 飛利浦','SONICARE 充電式智能電動護齦牙刷 HX3792 2入',6589,1910,'144255','',0,0,'×2','','plug','Sonicare HX3792'],
+['car','s','a','SOLAR GARD','奈米陶瓷全車貼 小型車 VX 系列（自選透光搭配）',null,4500,'164147','',0,0,'VX','','car','Solar Gard 奈米陶瓷 隔熱紙'],
+['home','s','a','SEALY','UNIVERSE 系列標準雙人床墊 152×190cm',18999,5000,'155765','',0,0,'152×190','','home','SEALY UNIVERSE 床墊'],
+['home','s','a','FRYE','雙人絨毛被三件組',1699,450,'1796287','',0,0,'3件組','','home','FRYE 絨毛被 三件組'],
+['clean','s','a','FEBREZE 風倍清','浴廁防霉防臭劑 6入',435,154,'144061','',0,0,'6入','','spray','風倍清 浴廁 防霉防臭'],
+['kitchen','s','a','RECOLTE 麗克特','電動食物處理機（有線版）RCP-3',null,310,'162967','',0,0,'RCP-3','','pot','recolte 食物處理機'],
+['kitchen','s','a','ROLLKITCHEN','不鏽鋼盆沙拉蔬果脫水器 4.5公升',399,100,'670475','',0,0,'4.5L','','pot','蔬果脫水器'],
+['beauty','s','a','CERAVE 適樂膚','長效潤澤修護霜 542g×2',939,260,'147055','',0,0,'542g×2','','drop','CeraVe 長效潤澤修護霜'],
+['beauty','s','a','CETAPHIL 舒特膚','極效修復乳 473ml×2',689,200,'156536','',0,0,'473ml×2','','drop','舒特膚 極效修復乳'],
+['kids','s','a','MAMYPOKO 滿意寶寶','寶可夢晚安褲 XL–XXL 男孩／女孩 88片',989,256,'153641','',0,0,'88片','','kids','滿意寶寶 寶可夢 晚安褲'],
+['clean','s','y','ARIEL','極致雙效洗衣精補充包 1100g×6',689,210,'417455','',0,0,'1.1kg×6','只到 11/26','spray','Ariel 洗衣精 補充包'],
+['beauty','s','a','NEXXUS','礦物純淨蓬鬆洗髮精／護髮乳 999ml',419,150,'159357','',0,0,'999ml','','drop','NEXXUS 洗髮精'],
+['beauty','s','a','SOFY 蘇菲','輕薄貼合衛生棉 30cm 17片×8包',539,150,'160910','',0,0,'30cm','','drop','蘇菲 輕薄貼合 衛生棉'],
+['beauty','s','a','SOFY 蘇菲','輕薄貼合衛生棉 26cm 19片×6包',399,120,'160909','',0,0,'26cm','','drop','蘇菲 輕薄貼合 衛生棉'],
+['fashion','s','a','CALVIN KLEIN','男刷毛襯衫外套（S–XL）',999,300,'2010526','',0,0,'S–XL','','shirt','Calvin Klein 刷毛襯衫外套'],
+['food','s','a','STARBUCKS 星巴克','早餐綜合咖啡豆 1.13kg',799,200,'614575','',0,0,'1.13kg','','food','星巴克 早餐綜合咖啡豆'],
+['food','s','a','KRONENBOURG 可倫堡','1664 白啤酒 330ml×24罐',799,200,'162401','',0,0,'24罐','未滿 18 歲禁止飲酒','food','1664 白啤酒'],
+['food','s','a','OLD SAN FRANCISCO 老舊金山','拿鐵二合一 20g×125包',609,160,'294541','',0,0,'125包','','food','老舊金山 拿鐵二合一'],
+['food','s','x','USDA PRIME','美國頂級嫩肩里肌真空包',349,130,'126311','',0,0,'PRIME','每公斤計價，只有 11/23 一天','food','美國 頂級 嫩肩里肌','/kg'],
+['food','s','a','HWA YUAN 華元','薯格格 酸奶洋蔥口味 500g',125,34,'117731','',0,0,'500g','','food','華元 薯格格'],
+
+['jewel','s','b','','1.0克拉 鉑金圓形鑽石戒指 VS2/I',null,19000,'2078692','',0,0,'1.0ct','','gem','1.0克拉 鑽石戒指'],
+['jewel','s','b','','0.6克拉 14K白K金圓形鑽石項鍊 VS2/I',null,7000,'2070172','',0,0,'0.6ct','','gem','鑽石項鍊 14K'],
+['appl','s','b','BOSCH 博世','60公分獨立式洗碗機 SMS4ITW00X',null,7140,'154940','',0,0,'60cm','','dish','BOSCH 60公分 洗碗機'],
+['appl','s','b','ELECTROLUX 伊萊克斯','45公分獨立式洗碗機 EFS3060VWB',null,6000,'164606','',0,0,'45cm','','dish','伊萊克斯 45公分 洗碗機'],
+['kitchen','s','b','CUISINART 美膳雅','17公升氣炸烤箱 CTOA-130PC3TW',null,2200,'136546','',0,0,'17L','','pot','Cuisinart 氣炸烤箱 17公升'],
+['small','s','b','PANASONIC 國際牌','18公升變頻除濕機 F-YV36QNS',null,1750,'164153','',0,0,'18L','','plug','國際牌 除濕機 F-YV36QNS'],
+['small','s','b','ORAL-B 歐樂B','iO GUMCARE 微震科技充電式電動牙刷（雙刷柄）',null,1170,'161458','',0,0,'iO','','plug','歐樂B iO GUMCARE'],
+['small','s','b','BEURER 博依','床墊型電毯 雙人雙控長效型 TS26XXL',null,610,'592906','',0,0,'140×150','','plug','博依 床墊型電毯'],
+['small','s','b','LAIFEN 徠芬','MINI 高速吹風機',null,570,'163035','',0,0,'MINI','','plug','徠芬 Mini 吹風機'],
+['kitchen','s','b','ZOJIRUSHI 象印','不鏽鋼真空保冷保溫瓶 600ml×2',null,400,'146824','',0,0,'600ml','','pot','象印 保溫瓶 600ml'],
+['home','s','b','SIDIZ','人體工學網布辦公椅',null,900,'158418','',0,0,'MESH','','home','SIDIZ 辦公椅'],
+['kids','s','b','MCLAREN','兒童電動卡丁車',null,2000,'150989','',0,0,'KART','','kids','McLaren 兒童電動卡丁車'],
+['kids','s','b','ASTON MARTIN','F1 兒童電動玩具車',null,1500,'150557','',0,0,'F1','','kids','Aston Martin F1 兒童電動車'],
+['kids','s','b','MAMYPOKO 滿意寶寶','三麗鷗輕巧褲 L 186片／XL 162片',null,224,'160901','',0,0,'L / XL','','kids','滿意寶寶 三麗鷗 輕巧褲'],
+['beauty','s','b','M2 美度','超能膠原新生組',null,400,'249523','',0,0,'SET','','drop','M2 美度 超能膠原'],
+['beauty','s','b','BIODERMA 貝膚黛瑪','舒敏潔膚液組合 850ml×3＋100ml×2',null,450,'236795','',0,0,'850ml×3','','drop','Bioderma 舒敏潔膚液'],
+['beauty','s','b',"L'OREAL 巴黎萊雅",'金緻護髮精油組',null,180,'1328989','',0,0,'100ml×2','','drop','巴黎萊雅 金緻護髮精油'],
+['food','s','b','TRYALL','分離豌豆植物蛋白 芝麻奶風味 2.5kg',null,300,'155642','',0,0,'2.5kg','','food','TRYALL 豌豆蛋白'],
+['food','s','b','','熟凍松葉蟹拼盤 600g',null,500,'415653','',0,0,'600g','','food','好市多 松葉蟹 拼盤'],
+
+['tv','o','o','TCL','85吋 X11L SQD-Mini LED 顯示器 85X11L',177999,82000,'161702','h71/h7d/490097869684766.jpg',0,0,'85″','','tv','TCL 85X11L'],
+['tv','o','o','TCL','98吋 X11L SQD-Mini LED 顯示器 98X11L',247999,82000,'161701','hfe/h0b/490097866670110.jpg',0,0,'98″','','tv','TCL 98X11L'],
+['tv','o','o','TCL','75吋 X11L SQD-Mini LED 顯示器 75X11L',117999,37000,'161703','he3/hf6/490097873485854.jpg',0,0,'75″','','tv','TCL 75X11L'],
+['tv','o','o','TCL','98吋 C8L SQD-Mini LED 顯示器 98C8L',115999,29000,'161704','h88/h4c/490097874468894.jpg',0,0,'98″','','tv','TCL 98C8L'],
+['tv','o','o','HISENSE 海信','4K 三雷射劇院雷射投影機 C2 Ultra 3000流明',42999,12000,'162862','h4e/h42/491336041562142.jpg',4.5,2,'4K','','tv','Hisense C2 Ultra 投影機'],
+['tv','o','o','SAMSUNG 三星','75吋 Neo QLED 4K AI 顯示器 QA75QN1EHAXXZW',42399,10600,'161508','haf/h77/505969061101598.jpg',0,0,'75″','','tv','Samsung 75吋 Neo QLED QN1EH'],
+['tv','o','o','TOSHIBA 東芝','Regza 75型 4K QLED 144Hz 顯示器 75Z670NT',30599,7700,'152535','h4d/h80/438072159993886.jpg',4.7,55,'75″','','tv','Toshiba Regza 75Z670NT'],
+['tv','o','o','SOUNDCORE','Rave 3S 200W AI 卡拉OK 派對音箱',7999,2000,'152562','hfb/h19/400499326615582.jpg',4.8,4,'200W','','tv','Soundcore Rave 3S'],
+['office','o','o','HP','EliteBook 635 Aero G11 13.3吋商用筆電 AQ8S3PT',29999,5340,'148014','h0c/h37/438478369554462.jpg',4.2,11,'13.3″','','laptop','HP EliteBook 635 Aero G11'],
+['office','o','o','ALESIS','Strata Club 電子鼓組',38399,9600,'158681','haf/h0c/431395324198942.jpg',5,1,'DRUMS','','laptop','Alesis Strata Club'],
+['office','o','o','FLYKEYS','SK3 數位鋼琴含琴椅',33599,8400,'158749','hba/hb6/431395339436062.jpg',0,0,'88鍵','','laptop','Flykeys SK3 數位鋼琴'],
+['office','o','o','FLYKEYS','88鍵數位鋼琴 FDP3',15998,4001,'154308','h33/h9e/367572685324318.jpg',4.8,8,'88鍵','','laptop','Flykeys FDP3'],
+['office','o','o','PENTEL 飛龍','雙頭油性筆 36支 多色',479,120,'129592','h0e/h52/45584444129310.jpg',4.5,4,'36支','','pen'],
+['office','o','o','PENTEL 飛龍','Energel 耐水極速鋼珠筆 0.5mm×12支',419,110,'117281','h32/hf1/15234290548766.jpg',4.4,17,'0.5mm','','pen'],
+['office','o','o','PENTEL 飛龍','Ain Stein 自動鉛筆芯 12入',335,84,'134889','h09/h07/84088490000414.jpg',5,28,'12入','','pen'],
+['office','o','o','PENTEL 飛龍','標準型橡皮擦 48入（小）',269,70,'129594','hd3/h1e/45584445833246.jpg',5,25,'48入','','pen'],
+['office','o','o','3M SCOTCH','膠帶 6入組（隱形×3＋透明×3）',319,80,'675749','h4f/h0c/261774611251230.jpg',4.8,34,'6入','','pen'],
+['small','o','o','DYSON 戴森','雙錐無纏結吸塵器 V10 SV55-A',12199,1300,'162395','h5c/h1f/483940825235486.jpg',3.6,9,'V10','','plug','Dyson V10 SV55'],
+['small','o','o','OASIS','Super Pro 桌上型多溫氣泡開飲機 IF-3FIZZ01K',12499,3200,'157668','h76/h41/414650658881566.jpg',3.9,12,'FIZZ','','plug','Oasis 氣泡開飲機'],
+['small','o','o','勳風','充電式二合一捕蚊燈拍 2入 DHF-T7092',575,144,'151121','h7d/h16/329850513555486.jpg',4.7,208,'×2','','plug','勳風 捕蚊燈拍'],
+['kitchen','o','o','TEFAL 特福','巧變精靈系列鍋具 含蓋7件組 寶石紅',3259,840,'163119','ha3/h03/501514956210206.jpg',5,1,'7件','','pot','Tefal 巧變精靈 7件組'],
+['kitchen','o','o','OCEANRICH','不鏽鋼錐刀電動磨豆機 G3',1779,450,'156091','h7f/h59/379632479404062.jpg',4.7,34,'G3','','pot','oceanrich G3 磨豆機'],
+['kitchen','o','o','HARIO','V60 手沖咖啡套組',1319,340,'164533','h7f/hdd/524431997468702.jpg',0,0,'V60','','pot','Hario V60 手沖套組'],
+['kitchen','o','o','HOUSUXI 舒希','Peanuts Tritan 輕透舒吸杯 760ml×2（史努比＋歐拉夫）',759,200,'163414','h83/h5a/502266245677086.jpg',0,0,'760ml','','pot','舒希 史努比 吸管杯'],
+['home','o','o','AIDEN & IVY','牛皮電動 L 型沙發 咖',30999,9000,'161552','hd3/h35/509995064229918.jpg',0,0,'L型','','home','Aiden & Ivy 電動 L型沙發'],
+['home','o','o','GILMAN CREEK','牛皮電動躺椅（棕／米）',15899,4100,'161551','hb8/h8e/509995059642398.jpg',0,0,'躺椅','棕、米兩色同價','home','Gilman Creek 電動躺椅'],
+['home','o','o','TED BAKER','真絲印花床包4件組 152×190cm',9659,10000,'161326','h8a/hb6/491697864081438.jpg',0,0,'4件','','home','Ted Baker 真絲 床包'],
+['home','o','o','DON HOME','300織萊賽爾雙人兩用被套 182×212cm',1359,340,'144537','ha5/h65/227566397423646.jpg',4.9,14,'300織','','home','Don Home 萊賽爾 被套'],
+['home','o','o','IRIS OHYAMA','LED 多功能金屬邊吸頂燈',2039,520,'133396','h18/hb2/188820020264990.jpg',4.4,45,'LED','','home','IRIS OHYAMA 吸頂燈'],
+['home','o','o','幻知曲','涼感舒眠枕 66×38×11cm',785,200,'156890','ha6/h87/418530686533662.jpg',4.4,47,'66cm','','home'],
+['home','o','o','BRAUN 百靈','數位鬧鐘 BC09（黑／白）',869,230,'152581','h6e/h40/344774460080158.jpg',5,1,'BC09','黑、白兩色同價','home'],
+['home','o','o','BRAUN 百靈','經典復刻現代主義掛鐘 BC26（黑／白）',719,180,'149317','h91/hc0/298414430355486.jpg',5,1,'BC26','黑、白兩色同價','home'],
+['home','o','o','BRAVE HOME','多功能可折疊籃子組 4入',799,200,'159481','hd1/h00/453636529455134.jpg',2.9,7,'4入','','home'],
+['home','o','o','GRANDEUR','快乾方巾 9入組 33×33cm',179,50,'2100481','h3c/h04/397423111766046.jpg',2,1,'9入','','home'],
+['clean','o','o','ARM & HAMMER','無香精貓砂 18.1公斤',525,140,'159858','h48/h36/472591363080222.jpg',4.5,11,'18.1kg','','spray'],
+['clean','o','o','ATTACK ZERO','超濃縮噴槍型洗衣凝露 380g＋補充包 2300g',479,130,'529229','hb8/h02/504931024273438.jpg',0,0,'2.3kg','','spray'],
+['clean','o','o','PURINA','DentaLife 成貓潔牙餅 鮭魚風味 51g×6',409,110,'160083','h53/h5c/490097852710942.jpg',5,1,'×6','','spray'],
+['beauty','o','o','VOLUSPA','桉樹＆白鼠尾草 乳液 2入組',1199,300,'159362','h7f/h6f/450418171445278.jpg',0,0,'×2','','drop'],
+['beauty','o','o','VOLUSPA','桉樹＆白鼠尾草 洗手液 450ml×2',1169,300,'159359','haa/h66/450418171379742.jpg',0,0,'450ml','','drop'],
+['beauty','o','o','VOLUSPA','桉樹＆白鼠尾草 護手霜 50ml×2',959,240,'159365','ha3/h79/450045317021726.jpg',0,0,'50ml','','drop'],
+['beauty','o','o','CIRCA','大豆香氛蠟燭 300g 茉莉花和木蘭',665,170,'163169','h22/hc2/501514957651998.jpg',0,0,'300g','','drop'],
+['beauty','o','o','SCHICK 舒適牌','舒綺極 仕女除毛刀組 敏感肌用',559,140,'140543','hbd/h42/469716638138398.jpg',4.9,11,'×2組','','drop'],
+['beauty','o','o','SHALLOP 刷樂','濃密除菌牙刷 8入',359,100,'157253','h91/h19/402145278263326.jpg',4.9,16,'8入','','drop'],
+['food','o','o','凱馨','台灣冷凍法洛斯土雞骨腿切塊 1kg×4',1019,180,'133313','haa/hae/70333716365342.jpg',4.7,208,'4kg','','food'],
+['food','o','o','大成','冷凍羅勒去骨清雞腿＋迷迭香清雞胸 5kg',1199,270,'157707','hf1/h86/402145328660510.jpg',4.8,13,'5kg','','food'],
+['food','o','o','名廚美饌','冷凍德國豬腳 700g×3',719,180,'141223','h0b/h27/309921252802590.jpg',4.5,400,'×3','','food'],
+['food','o','o','寒舍集團 請客樓','芝香石鍋爆魷魚湯底 1200g×8',875,224,'155599','h4f/hbb/401755791622174.jpg',4.3,25,'×8','','food'],
+['food','o','o','VOLVIC 富維克','天然礦泉水 750ml×12瓶',349,90,'125524','h1c/ha9/27140124835870.jpg',4.8,229,'×12','','food'],
+['jewel','o','o','','24K 黃金結婚套組 幸福約定 2500厘',519999,30000,'146073','hab/he6/347357267755038.jpg',3,1,'2500厘','黃金類可能不適用黑鑽 2% 回饋','gem'],
+['jewel','o','o','','24K 黃金項鍊 平安無事 666厘',139999,19000,'159066','h12/hb1/436453408866334.jpg',0,0,'666厘','黃金類可能不適用黑鑽 2% 回饋','gem'],
+['jewel','o','o','','24K 黃金手鍊 極光福祿 133厘',26299,3600,'159037','hd7/h44/436453403459614.jpg',0,0,'133厘','黃金類可能不適用黑鑽 2% 回饋','gem'],
+['jewel','o','o','','24K 黃金戒指 72厘',12679,800,'149960','h50/h63/309398520725534.jpg',5,1,'72厘','黃金類可能不適用黑鑽 2% 回饋','gem'],
+['jewel','o','o','','0.50克拉 14K白K金圓形鑽石項鍊 VS2/I',19999,5000,'1366494','hd2/hf7/367883220942878.jpg',4,9,'0.5ct','','gem'],
+['kids','o','o','WONDERFOLD','VW2 福斯聯名款雙人座推車 邦迪藍',20999,10000,'152453','hd8/hae/343413921480734.jpg',0,0,'VW2','','kids','Wonderfold VW2 推車'],
+['kids','o','o','KIDKRAFT','Sunny Bluff 遊戲屋',10899,4100,'1872206','hf7/h1f/471660421840926.jpg',0,0,'HOUSE','','kids','KidKraft Sunny Bluff 遊戲屋'],
+['kids','o','o','FISHER-PRICE 費雪','安撫玩樂套裝（3個月以上）',1279,320,'156224','h79/h23/379898144030750.jpg',5,1,'3M+','另有 9 款費雪玩具特價，現省 $90–280','kids','費雪 玩具'],
+['kids','o','o','MAGFORMERS','磁性建構片 閃亮公園（3歲以上）',799,200,'153279','h21/hf6/348867397615646.jpg',4.5,2,'3Y+','另有螢光 20 片裝 $719（省 $180）','kids','Magformers 磁性建構片'],
+['kids','o','o',"PRO'SKIT 寶工",'液壓機械手套 附手鉗（10歲以上）',599,170,'129850','h36/h29/172356531421214.jpg',4.9,36,'10Y+','另有 9 款寶工科學玩具特價，現省 $100–260','kids','寶工 科學玩具'],
+['kids','o','o','JURASSIC WORLD','兒童軟殼外套',699,200,'8523774','h8a/hb1/419358485151774.jpg',0,0,'KIDS','','shirt'],
+['kids','o','o','PEKKLE','兒童束口褲 2件組',349,100,'2010509','h44/h78/489268562067486.jpg',0,0,'×2','','shirt'],
+['kids','o','o','','兒童卡通圖案長袖居家組（男童／女童）',299,86,'149503','h4d/hd6/526007354163230.jpg',4,1,'4–12','尺寸 4–12，男女童款同價','shirt'],
+['outdoor','o','o','SOLE','E98+ 智能橢圓機',53999,21000,'144928','h65/hfa/243378207588382.jpg',0,0,'E98+','','tent','SOLE E98 橢圓機'],
+['outdoor','o','o','STAG','Pacifica 戶外乒乓球桌',8999,6600,'2622001','hdf/hb5/454002089590814.jpg',3.2,6,'TABLE','','tent','STAG Pacifica 乒乓球桌'],
+['outdoor','o','o','IGLOO','18.9公升保冷桶',899,860,'1872201','hca/h9f/454001921064990.jpg',5,2,'18.9L','','tent','Igloo 保冷桶'],
+['outdoor','o','o','湯悅溫泉','家庭四人房平日住宿券',9555,3500,'147159','h90/h1f/277970927714334.jpg',0,0,'4人','','tent','湯悅溫泉'],
+['outdoor','o','o','KOVEA','三合一瓦斯爐 KGG-0904EMC',2999,1300,'140825','h82/h8c/189642931470366.jpg',3.5,6,'3-WAY','','tent','KOVEA 三合一瓦斯爐'],
+['outdoor','o','o','KASACA','Pro Max II 專業競技款匹克球拍',2319,580,'161128','h33/h29/455933816864798.jpg',5,4,'PRO','','tent','KASACA 匹克球拍'],
+['outdoor','o','o','WILSON 威爾森','NBA Signature 合成皮籃球 7號',705,180,'1525404','he5/h01/87394863415326.jpg',4.7,27,'SZ7','','tent'],
+['outdoor','o','o','SUNNYFEEL 山扉','可調節露營椅',489,230,'8527298','h04/h17/487711295438878.jpg',4.6,5,'CHAIR','','tent','山扉 露營椅'],
+['outdoor','o','o','翠筠','氣壓式噴壺 1.5公升×2',549,150,'127124','hc3/h79/255087284715550.jpg',4.6,20,'1.5L','','tent'],
+['outdoor','o','o','','瓦仔盆／瓦仔高盆 多款（6吋、8吋）',539,150,'116479','hdb/hb6/12474286538782.jpg',4.1,7,'8吋','共 10 款，現省 $70–150','tent'],
+['outdoor','o','o','靚土','蔬果肥 25公升×6',749,250,'123196','h1a/hf9/12385816313886.jpg',4.9,39,'25L×6','','tent'],
+['outdoor','o','o','丸莊','葉菜用高氮肥／蔬果用成長肥 20公斤',364,125,'139813','h7a/hd9/140154733625374.jpg',5,9,'20kg','兩款同價','tent'],
+['car','o','o','PIRELLI 倍耐力','輪胎（同車購買並安裝 4 條相同規格）',null,2000,'117416','hb2/h8f/275511568728094.jpg',0,0,'×4','15吋省 $800、16–17吋省 $1,500、18吋以上省 $2,000，另免安裝費','car','倍耐力 輪胎'],
+['car','o','o','TUNAP','989 柴油引擎噴油嘴清潔劑 300ml×2',1265,434,'151033','h79/h22/520916791885854.jpg',4.8,6,'300ml','','car'],
+['car','o','o','SIMONIZ','星耀無水洗車蠟 500ml×2',369,130,'156122','h5e/h82/379074478211102.jpg',4.8,6,'500ml','','car'],
+['fashion','o','o','JIMMY CHOO','太陽眼鏡（黑／粉／銅 三款）',2499,800,'250674','ha4/h73/381684952399902.jpg',4.5,2,'UV','KARLY 黑、LAVI 粉、ALEXIS 銅','shirt'],
+['fashion','o','o','PALLADIUM','橘標防水鯊齒鞋（男／女）',2259,600,'156946','h8c/h87/422090912497694.jpg',4.3,41,'VIBRAM','男女款同價','shirt'],
+['fashion','o','o','WEATHERPROOF VINTAGE','女圓領喀什米爾毛衣',1479,370,'2011489','h33/h37/504930985934878.jpg',0,0,'','','shirt'],
+['fashion','o','o','COLUMBIA','男防風防潑水外套',1199,300,'159781','he4/h01/488918674931742.jpg',4.8,8,'','','shirt'],
+['fashion','o','o','32 DEGREES','男羽絨外套',999,350,'1592680','h55/he3/502266071613470.jpg',0,0,'','','shirt'],
+['fashion','o','o','BRUSH FINCH','女長袖羊絨 Polo 衫',989,250,'8527265','h89/hd5/492430282555422.jpg',0,0,'','','shirt'],
+['fashion','o','o','TOMMY HILFIGER','男長褲',799,200,'8520434','h49/hc2/403099850244126.jpg',4.6,16,'','','shirt'],
+['fashion','o','o','ADVENT','女雙面穿外套',749,200,'2010489','h0d/h6b/506668956942366.jpg',0,0,'','','shirt'],
+['fashion','o','o','DKNY','女休閒寬褲',679,170,'158774','h8e/h14/504930803089438.jpg',0,0,'','','shirt'],
+['fashion','o','o','DKNY JEANS','女長袖上衣',679,170,'2010465','h94/h55/491336120598558.jpg',0,0,'','','shirt'],
+['fashion','o','o','SCOTCH & SODA','女牛仔外套',679,170,'158489','he1/h72/489268214923294.jpg',0,0,'','','shirt'],
+['fashion','o','o','SCOTCH & SODA','女開襟衫',599,150,'2010439','h0d/h6a/505689526075422.jpg',0,0,'','','shirt'],
+['fashion','o','o','郡是 GUNZE','女無鋼圈內衣（M／L／LL）',669,170,'141264','h9e/hc0/520916781858846.jpg',0,0,'','','shirt'],
+['fashion','o','o','CALVIN KLEIN','男長袖 Polo 衫',659,190,'2010503','h1d/h98/523257979928606.jpg',0,0,'','','shirt'],
+['fashion','o','o','JEZEBEL','女無痕內衣 2入組',599,150,'2008497','h9d/h2e/492430087127070.jpg',0,0,'','','shirt'],
+['fashion','o','o','NAUTICA','男長袖襯衫',589,160,'1970225','hca/h60/471660428787742.jpg',3.7,3,'','','shirt'],
+['fashion','o','o','ADIDAS','男內褲 3入組',549,140,'158877','hf5/h14/452308882849822.jpg',4.8,5,'','','shirt'],
+['fashion','o','o','KIRKLAND 科克蘭','男防風軟殼外套',549,200,'7771781','he6/hbb/490098126159902.jpg',5,4,'','','shirt'],
+['fashion','o','o','KEITH HARING','女休閒服組',549,150,'1896550','hc3/h65/508719837872158.jpg',0,0,'','','shirt'],
+['fashion','o','o','HILARY RADLEY','女寬褲',519,130,'2010437','h12/he2/507675037204510.jpg',0,0,'','','shirt'],
+['fashion','o','o','BANANA REPUBLIC','女圓領鈕扣開襟衫',519,130,'2010222','hf6/hf0/504930963587102.jpg',0,0,'','','shirt'],
+['fashion','o','o','HALSTON','女保暖褲襪 2入 黑',519,130,'1925490','hb0/hd3/505689517621278.jpg',0,0,'','','shirt'],
+['fashion','o','o','DICKIES','男厚磅長袖上衣',499,200,'1846568','hdb/h7b/504930951200798.jpg',0,0,'','','shirt'],
+['fashion','o','o','AS','日本製男士 U 領上衣 2入組',499,150,'160715','hea/h36/473819899789342.jpg',4,2,'','','shirt'],
+['fashion','o','o','LAYER ZERO','女長袖上衣兩件組',479,120,'160490','h9b/h7a/505689324159006.jpg',0,0,'','','shirt'],
+['fashion','o','o','LUCKY BRAND','女長袖睡衣兩件套組',469,120,'701260','hb3/h14/524873228353566.jpg',0,0,'','','shirt'],
+['fashion','o','o','ADIDAS ORIGINALS','男短袖上衣 2入組',449,150,'159606','h8a/h03/504581528944670.jpg',3.6,7,'','','shirt'],
+['fashion','o','o','32 DEGREES','女發熱褲 2入組（M／L／XL）',439,110,'1307668','hbf/h18/116285567696926.jpg',4.3,12,'','','shirt'],
+['fashion','o','o','COLE HAAN','男短襪 10入組',399,150,'926341','hbe/h6e/471216592781342.jpg',4.7,16,'','','shirt'],
+['fashion','o','o','LAZYPANTS','男束口長褲',399,140,'2037049','hf9/h64/492430245462046.jpg',0,0,'','','shirt'],
+['fashion','o','o','TAILOR VINTAGE','男長褲',399,130,'214507','hdf/h6f/418530770026526.jpg',4.4,7,'','','shirt'],
+['fashion','o','o','TIMBERLAND','男中筒襪 6入組',369,96,'159907','h31/h15/471660196986910.jpg',4.2,5,'','','shirt'],
+
+['small','p','p','DYSON 戴森','空氣清淨機',null,null,'','',0,0,'SOON','已列入預告，日期與價格尚未公布','plug','Dyson 空氣清淨機'],
+['small','p','p','LG','除濕機',null,null,'','',0,0,'SOON','已列入預告，日期與價格尚未公布','plug','LG 除濕機'],
+['small','p','p','DREAME 追覓','三合一吹風直髮器',null,null,'','',0,0,'SOON','已列入預告，日期與價格尚未公布','plug','Dreame 吹風直髮器'],
+['kitchen','p','p','LE CREUSET','鑄鐵圓形燉鍋',null,null,'','',0,0,'SOON','已列入預告，日期與價格尚未公布','pot','Le Creuset 鑄鐵圓形燉鍋'],
+['food','p','p','','日本 A4 和牛',null,null,'','',0,0,'A4','已列入預告，部位與價格尚未公布','food','好市多 A4 和牛'],
+['jewel','p','p','','限量黃金珠寶（最高現省 $30,000）',null,null,'','',0,0,'SOON','已列入預告，品項尚未公布','gem','好市多 黃金']
+];
+
+const CATS = {
+  tv:{l:'電視影音',ic:'tv'}, appl:{l:'大型家電',ic:'washer'}, small:{l:'小家電',ic:'plug'}, kitchen:{l:'廚房',ic:'pot'},
+  home:{l:'家具寢具',ic:'home'}, clean:{l:'清潔寵物',ic:'spray'}, beauty:{l:'美妝個護',ic:'drop'}, food:{l:'食品生鮮',ic:'food'},
+  fashion:{l:'服飾鞋包',ic:'shirt'}, jewel:{l:'珠寶黃金',ic:'gem'}, kids:{l:'母嬰玩具',ic:'kids'}, outdoor:{l:'運動戶外',ic:'tent'},
+  car:{l:'汽車用品',ic:'car'}, office:{l:'3C・文具・樂器',ic:'laptop'}
+};
+const W = {
+  a:['2026-11-23','2026-12-06','11/23–12/06'], b:['2026-11-24','2026-12-06','11/24–12/06'],
+  x:['2026-11-23','2026-11-23','僅 11/23'], y:['2026-11-23','2026-11-26','11/23–11/26'],
+  o:['2026-11-23','2026-11-29','至 11/29'], u:['2026-11-23',null,'11/23 起'], p:[null,null,'日期未公布']
+};
+const CH = {s:'賣場', o:'線上', p:'預告'};
+const STORES = ['台北內湖','北投','中和','新莊','汐止','新竹','桃園中壢','桃園南崁','台中','北台中','嘉義','台南','北高雄大順','新高雄'];
+const START = '2026-11-23', END = '2026-12-06', LAST_DROP = '2026-12-05';
+
+const items = RAW.map((r, i) => {
+  const sale = r[5] ?? null, save = r[6] ?? null;
+  const orig = sale != null && save != null ? sale + save : null;
+  const it = { id:i, cat:r[0], ch:r[1], win:r[2], brand:r[3]||'', name:r[4], sale, save, orig,
+    pct: orig ? save / orig : null, no:r[7]||'', img:r[8]||'', r:r[9]||0, rc:r[10]||0,
+    spec:r[11]||'', note:r[12]||'', ic:r[13]||CATS[r[0]].ic, q:r[14]||'', unit:r[15]||'' };
+  it.key = (it.no || '') + '|' + it.name;
+  it.gold = /24K/.test(it.name);
+  it.hay = (it.brand + ' ' + it.name + ' ' + it.q + ' ' + CATS[it.cat].l + ' ' + it.no).toLowerCase();
+  return it;
+});
+
+/* ---------- time (Asia/Taipei) ---------- */
+const TZ = 8 * 3600e3;
+function tpeParts(ms){ const d = new Date(ms + TZ); return {y:d.getUTCFullYear(), m:d.getUTCMonth()+1, d:d.getUTCDate(), w:d.getUTCDay(), h:d.getUTCHours(), mi:d.getUTCMinutes(), s:d.getUTCSeconds()}; }
+const pad = n => String(n).padStart(2,'0');
+function todayStr(){ const p = tpeParts(Date.now()); return `${p.y}-${pad(p.m)}-${pad(p.d)}`; }
+function dayDiff(a, b){ return Math.round((Date.parse(b) - Date.parse(a)) / 864e5); }
+let TODAY = todayStr();
+
+function status(it){
+  const w = W[it.win];
+  if (!w[0]) return 'soon';
+  if (TODAY < w[0]) return 'up';
+  if (w[1] && TODAY > w[1]) return 'ended';
+  return 'live';
+}
+
+/* ---------- state ---------- */
+const S = { ch:'all', cat:'all', q:'', sort:'save', hide:true };
+let LIST = new Set();
+const store = {
+  get(k, d){ try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch(e){ return d; } },
+  set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+LIST = new Set(store.get('bf26-list', []));
+const OPT = Object.assign({bd:true, fb:false}, store.get('bf26-opt', {}));
+
+/* ---------- helpers ---------- */
+const $ = s => document.querySelector(s);
+const fmt = n => '$' + Number(n).toLocaleString('en-US');
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const icon = (id, cls='') => `<svg class="${cls}" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-${id}"/></svg>`;
+function specOf(it){
+  if (it.spec) return it.spec;
+  const words = it.brand.split(/\s+/).filter(w => /^[A-Za-z0-9&'.]+$/.test(w));
+  if (!words.length) return CATS[it.cat].l.slice(0, 2);
+  const first = words[0].replace(/[^A-Za-z0-9&]/g, '');
+  return first.length <= 10 ? first : words.map(w => w[0]).join('');
+}
+function linkOf(it){
+  if (it.ch === 'o') return 'https://www.costco.com.tw/p/' + encodeURIComponent(it.no);
+  return 'https://www.costco.com.tw/search?text=' + encodeURIComponent(it.q || (it.brand + ' ' + it.name));
+}
+function ytOf(it){ return 'https://www.youtube.com/results?search_query=' + encodeURIComponent((it.q || (it.brand.split(' ')[0] + ' ' + it.name)) + ' 開箱'); }
+const winText = it => W[it.win][2];
+const upText = it => { const d = W[it.win][0].slice(5).replace('-', '/').replace(/^0/, ''); return d + ' 開賣'; };
+
+/* ---------- card ---------- */
+function card(it){
+  const st = status(it);
+  const inList = LIST.has(it.key);
+  let badge = '';
+  if (it.pct != null) badge = `<span class="badge num ${it.pct >= .3 ? 'hot' : ''}">−${Math.round(it.pct*100)}%</span>`;
+  else if (it.save != null) badge = `<span class="badge num">省${fmt(it.save)}</span>`;
+  else badge = `<span class="badge soon">即將公布</span>`;
+  const stat = st === 'ended' ? '<span class="stat">已結束</span>' : st === 'up' ? `<span class="stat up">${upText(it)}</span>` : '';
+  const photo = it.img ? `<img src="photos/${encodeURIComponent(it.no)}.jpg" alt="${esc(it.brand + ' ' + it.name)}" loading="lazy">` : '';
+  let price;
+  if (it.sale != null) {
+    price = `<div class="price"><span class="now">${fmt(it.sale)}${it.unit ? `<small>${it.unit}</small>` : ''}</span><s>${fmt(it.orig)}</s></div>
+             <div class="save">現省 <span class="num">${fmt(it.save)}</span>${it.unit ? ' /kg' : ''}</div>`;
+  } else if (it.save != null) {
+    price = `<div class="price"><span class="now tbd">${it.ch === 'o' ? '依輪胎尺寸折抵' : '售價以賣場標示為準'}</span></div>
+             <div class="save">${it.ch === 'o' ? '最高現省' : '現省'} <span class="num">${fmt(it.save)}</span></div>`;
+  } else {
+    price = `<div class="price"><span class="now tbd">價格待公布</span></div><div class="hint">每天 16:00 官方公布隔天品項</div>`;
+  }
+  const stars = it.rc ? `<span class="stars"><b>★</b> ${it.r.toFixed(1)} (${it.rc})</span>` : '';
+  const video = it.cat !== 'fashion' ? `<a href="${ytOf(it)}" target="_blank" rel="noopener" title="在 YouTube 搜尋開箱影片">影片</a>` : '';
+  return `<article class="card ${st === 'ended' ? 'ended' : ''}" id="c${it.id}">
+    <div class="media">
+      <div class="tile">${icon(it.ic)}<span class="spec">${esc(specOf(it))}</span></div>
+      ${photo}
+      ${badge}${stat}
+      ${it.no ? `<span class="itno">#${esc(it.no)}</span>` : ''}
+      <span class="catlab">${CATS[it.cat].l}</span>
+    </div>
+    <div class="body">
+      ${it.brand ? `<div class="brand">${esc(it.brand)}</div>` : ''}
+      <h3 class="name" title="${esc(it.name)}">${esc(it.name)}</h3>
+      ${price}
+      <div class="meta"><span class="ch ${it.ch}">${CH[it.ch]}</span><span>${winText(it)}</span>${stars}</div>
+      ${it.note ? `<p class="note">${esc(it.note)}</p>` : ''}
+    </div>
+    <div class="acts" ${video ? '' : 'style="grid-template-columns:1fr auto"'}>
+      <button class="add" type="button" data-key="${esc(it.key)}" aria-pressed="${inList}">${inList ? '已加入' : '＋ 清單'}</button>
+      <a href="${linkOf(it)}" target="_blank" rel="noopener" title="${it.ch === 'o' ? '開啟好市多官網商品頁' : '在好市多官網搜尋這個商品'}">看照片</a>
+      ${video}
+    </div>
+  </article>`;
+}
+
+/* ---------- filtering + sorting ---------- */
+function visible(){
+  const q = S.q.trim().toLowerCase();
+  const terms = q ? q.split(/\s+/) : [];
+  let list = items.filter(it =>
+    (S.ch === 'all' || it.ch === S.ch) &&
+    (S.cat === 'all' || it.cat === S.cat) &&
+    (!S.hide || status(it) !== 'ended') &&
+    terms.every(t => it.hay.includes(t)));
+  const nil = (v, d) => v == null ? d : v;
+  const by = {
+    save: (a, b) => nil(b.save, -1) - nil(a.save, -1),
+    pct:  (a, b) => nil(b.pct, -1) - nil(a.pct, -1) || nil(b.save, -1) - nil(a.save, -1),
+    low:  (a, b) => nil(a.sale, Infinity) - nil(b.sale, Infinity),
+    high: (a, b) => nil(b.sale, -1) - nil(a.sale, -1)
+  }[S.sort];
+  const rank = it => ({live:0, up:1, soon:2, ended:3})[status(it)];
+  return list.sort((a, b) => (rank(a) === 3) - (rank(b) === 3) || by(a, b));
+}
+
+function renderGrid(){
+  const list = visible();
+  $('#grid').innerHTML = list.length ? list.map(card).join('') :
+    `<div class="empty">沒有符合的商品。試試清除搜尋字，或切回「全部」通路與分類。</div>`;
+  const known = list.filter(i => i.save != null);
+  const maxSave = known.reduce((m, i) => Math.max(m, i.save), 0);
+  $('#count').textContent = `顯示 ${list.length} 項` + (maxSave ? `・最高現省 ${fmt(maxSave)}` : '') + '・線上商品附官網照片，賣場商品點「看照片」';
+}
+
+function renderControls(){
+  const counts = {all:items.length, s:0, o:0, p:0};
+  items.forEach(i => counts[i.ch]++);
+  $('#seg').innerHTML = [['all','全部'],['s','賣場'],['o','線上'],['p','預告']].map(([k, l]) =>
+    `<button type="button" data-ch="${k}" aria-pressed="${S.ch === k}">${l}<small>${counts[k]}</small></button>`).join('');
+  const inCh = items.filter(i => S.ch === 'all' || i.ch === S.ch);
+  const cc = {}; inCh.forEach(i => cc[i.cat] = (cc[i.cat] || 0) + 1);
+  $('#chips').innerHTML = `<button type="button" data-cat="all" aria-pressed="${S.cat === 'all'}">全部分類</button>` +
+    Object.keys(CATS).filter(k => cc[k]).map(k =>
+      `<button type="button" data-cat="${k}" aria-pressed="${S.cat === k}">${CATS[k].l} ${cc[k]}</button>`).join('');
+}
+
+function renderRail(){
+  const top = items.filter(i => i.pct != null && ['live','up'].includes(status(i)))
+    .sort((a, b) => b.pct - a.pct).slice(0, 10);
+  $('#rail').innerHTML = top.map(i => `<button type="button" data-goto="${i.id}">
+      <span class="pct num">−${Math.round(i.pct*100)}%</span>
+      <span class="rn">${esc((i.brand ? i.brand.split(' ')[0] + ' ' : '') + i.name)}</span>
+      <span class="rp">${fmt(i.sale)}${i.unit}<s>${fmt(i.orig)}</s></span>
+    </button>`).join('');
+}
+
+/* ---------- list drawer ---------- */
+function listItems(){ return items.filter(i => LIST.has(i.key)); }
+function renderFab(){
+  const li = listItems();
+  const sv = li.reduce((s, i) => s + (i.save || 0), 0);
+  $('#fab-cnt').textContent = li.length;
+  $('#fab-sv').textContent = sv ? '省 ' + fmt(sv) : '';
+}
+let clearArmed = false;
+function renderDrawer(){
+  const li = listItems();
+  $('#plist').innerHTML = li.length ? li.map(i => `<div class="li">
+      <div class="n">${esc((i.brand ? i.brand.split(' ')[0] + ' ' : '') + i.name)}<small>${CH[i.ch]}・${winText(i)}${i.no ? '・#' + esc(i.no) : ''}</small></div>
+      <div class="p">${i.sale != null ? fmt(i.sale) + i.unit : '賣場標價'}<small>${i.save != null ? '省 ' + fmt(i.save) : '待公布'}</small></div>
+      <button type="button" data-del="${esc(i.key)}">移除</button>
+    </div>`).join('') : `<p class="pempty">還沒有商品。在商品卡按「＋ 清單」，這裡會幫你加總特價、現省金額，並估算回饋。</p>`;
+  const priced = li.filter(i => i.sale != null);
+  const total = priced.reduce((s, i) => s + i.sale, 0);
+  const saved = li.reduce((s, i) => s + (i.save || 0), 0);
+  const bd = OPT.bd ? Math.round(priced.filter(i => !i.gold).reduce((s, i) => s + i.sale, 0) * .02) : 0;
+  const fb = OPT.fb ? Math.round(priced.reduce((s, i) => s + i.sale * (i.ch === 'o' ? .03 : .02), 0)) : 0;
+  const unpriced = li.length - priced.length;
+  $('#pf').innerHTML = `
+    <div class="tot big"><span>特價合計</span><b>${fmt(total)}</b></div>
+    <div class="tot sv"><span>共省</span><b>${fmt(saved)}</b></div>
+    <div class="opts">
+      <label><input type="checkbox" id="o-bd" ${OPT.bd ? 'checked' : ''}> 我是黑鑽會員（2%，黃金類不計）<b class="num" style="margin-left:auto">${fmt(bd)}</b></label>
+      <label><input type="checkbox" id="o-fb" ${OPT.fb ? 'checked' : ''}> 刷富邦 Costco 聯名卡（賣場 2%、線上 3%）<b class="num" style="margin-left:auto">${fmt(fb)}</b></label>
+    </div>
+    <div class="tot"><span>扣回饋後約</span><b>${fmt(total - bd - fb)}</b></div>
+    ${unpriced ? `<p class="fine">有 ${unpriced} 項尚未公布售價，只計入共省金額。</p>` : ''}
+    <p class="fine">回饋為事後發放，金額為估算。清單只存在這台裝置的瀏覽器裡。</p>
+    ${li.length ? `<button class="clr ${clearArmed ? 'arm' : ''}" id="clr" type="button">${clearArmed ? '再按一次確認清空' : '清空清單'}</button>` : ''}`;
+}
+function saveList(){ store.set('bf26-list', [...LIST]); renderFab(); }
+function openDrawer(){ clearArmed = false; renderDrawer(); $('#drawer').hidden = false; $('#close').focus(); document.body.style.overflow = 'hidden'; }
+function closeDrawer(){ $('#drawer').hidden = true; document.body.style.overflow = ''; $('#fab').focus(); }
+
+/* ---------- header board ---------- */
+const WK = ['日','一','二','三','四','五','六'];
+function renderBoard(){
+  const p = tpeParts(Date.now());
+  TODAY = todayStr();
+  $('#today-label').textContent = `今天 ${p.m}/${p.d}（${WK[p.w]}）`;
+  let dayTxt;
+  if (TODAY < START) dayTxt = `${dayDiff(TODAY, START)} 天後開始`;
+  else if (TODAY > END) dayTxt = '活動已結束';
+  else { const n = dayDiff(START, TODAY) + 1; dayTxt = `第 ${n} 天・剩 ${14 - n} 天`; }
+  $('#day-of').textContent = dayTxt;
+  // next 16:00 Taipei drop, through 12/05
+  const now = Date.now();
+  let target = Date.UTC(p.y, p.m - 1, p.d, 16 - 8, 0, 0);
+  if (now >= target) target += 864e5;
+  const tp = tpeParts(target);
+  const tStr = `${tp.y}-${pad(tp.m)}-${pad(tp.d)}`;
+  if (tStr > LAST_DROP) { $('#cd-label').textContent = '每日新品公布'; $('#cd').textContent = '已全部公布'; return; }
+  const left = Math.max(0, Math.floor((target - now) / 1000));
+  const nx = tpeParts(target + 864e5);
+  $('#cd-label').textContent = `${tp.m}/${tp.d} 16:00 公布 ${nx.m}/${nx.d} 新品`;
+  $('#cd').textContent = `${pad(Math.floor(left / 3600))}:${pad(Math.floor(left % 3600 / 60))}:${pad(left % 60)}`;
+}
+
+/* ---------- black-diamond calculator ---------- */
+function renderCalc(){
+  const v = Math.max(0, Number($('#spend').value) || 0);
+  const back = Math.min(30000, Math.round(v * .02));
+  const net = back - 1500;
+  $('#calc-out').innerHTML = `一年回饋約 <b>${fmt(back)}</b>，扣掉多付的年費 1,500 後${net >= 0 ? '淨賺' : '倒貼'} <b>${fmt(Math.abs(net))}</b><br>
+    <span class="verdict ${net >= 0 ? 'yes' : 'no'}">${net >= 0 ? '升級黑鑽划算' : '維持金星即可'}</span>`;
+}
+
+/* ---------- events ---------- */
+document.addEventListener('click', e => {
+  const t = e.target.closest('button, [data-goto]');
+  if (!t) return;
+  if (t.dataset.ch) { S.ch = t.dataset.ch; S.cat = 'all'; renderControls(); renderGrid(); }
+  else if (t.dataset.cat) { S.cat = t.dataset.cat; renderControls(); renderGrid(); }
+  else if (t.dataset.key) {
+    const k = t.dataset.key;
+    LIST.has(k) ? LIST.delete(k) : LIST.add(k);
+    t.setAttribute('aria-pressed', LIST.has(k)); t.textContent = LIST.has(k) ? '已加入' : '＋ 清單';
+    saveList();
+  }
+  else if (t.dataset.goto != null) {
+    const id = +t.dataset.goto;
+    if (!document.getElementById('c' + id)) { S.ch = 'all'; S.cat = 'all'; S.q = ''; $('#q').value = ''; renderControls(); renderGrid(); }
+    const el = document.getElementById('c' + id);
+    if (el) { el.scrollIntoView({block:'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}); el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); }
+  }
+  else if (t.dataset.del) { LIST.delete(t.dataset.del); saveList(); renderDrawer(); syncButtons(); }
+  else if (t.id === 'fab') openDrawer();
+  else if (t.id === 'close') closeDrawer();
+  else if (t.id === 'clr') {
+    if (!clearArmed) { clearArmed = true; renderDrawer(); }
+    else { LIST.clear(); clearArmed = false; saveList(); renderDrawer(); syncButtons(); }
+  }
+});
+$('#scrim').addEventListener('click', closeDrawer);
+document.addEventListener('error', e => { if (e.target.tagName === 'IMG' && e.target.closest('.media')) e.target.remove(); }, true);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('#drawer').hidden) closeDrawer(); });
+$('#pf').addEventListener('change', e => {
+  if (e.target.id === 'o-bd') OPT.bd = e.target.checked;
+  if (e.target.id === 'o-fb') OPT.fb = e.target.checked;
+  store.set('bf26-opt', OPT); renderDrawer();
+});
+function syncButtons(){ document.querySelectorAll('.add').forEach(b => { const on = LIST.has(b.dataset.key); b.setAttribute('aria-pressed', on); b.textContent = on ? '已加入' : '＋ 清單'; }); }
+let qt;
+$('#q').addEventListener('input', e => { clearTimeout(qt); qt = setTimeout(() => { S.q = e.target.value; renderGrid(); }, 120); });
+$('#sort').addEventListener('change', e => { S.sort = e.target.value; renderGrid(); });
+$('#hide-ended').addEventListener('change', e => { S.hide = e.target.checked; renderGrid(); });
+$('#spend').addEventListener('input', renderCalc);
+
+$('#stores').innerHTML = STORES.map(s => `<span>${s}</span>`).join('');
+renderBoard(); renderControls(); renderRail(); renderGrid(); renderFab(); renderCalc();
+setInterval(() => {
+  const before = TODAY; renderBoard();
+  if (TODAY !== before) { renderRail(); renderGrid(); }
+}, 1000);
+</script>
